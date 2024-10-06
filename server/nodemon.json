@@ -2,5 +2,7 @@
   "watch": ["index.js", "src/"],
   "ext": "js,json",
   "ignore": ["node_modules/"],
-  "exec": "node index.js"
+  "exec": "node index.js",
+  "delay": "2500",
+  "signal": "SIGTERM"
 }
