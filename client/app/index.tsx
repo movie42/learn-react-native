@@ -1,10 +1,10 @@
-import CustomButton from "@/components/CustomButton";
+import { Button } from "@/shared";
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
 
-import { images } from "../constants";
+import { images } from "@/shared/constants";
 
 const App = () => {
   return (
@@ -36,7 +36,7 @@ const App = () => {
             Where creativity meets innovation: embark on a journey of limitless
             exploration with Aora
           </Text>
-          <CustomButton
+          <Button
             title="Continue with Email"
             onPress={() => {
               router.push("/sign-in");

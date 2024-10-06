@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 
-import CustomButton from "@/components/CustomButton";
-import FormField from "@/components/FormField";
+import { Button, FormField } from "@/shared";
+import { images } from "@/shared/constants";
 import { Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { images } from "../../constants";
 
 const SignIn = () => {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -39,7 +38,7 @@ const SignIn = () => {
             onChangeText={(e) => setForm({ ...form, password: e })}
             otherStyles="mt-7"
           />
-          <CustomButton
+          <Button
             title="Sign In"
             onPress={handleSubmit}
             containerStyles="mt-7"

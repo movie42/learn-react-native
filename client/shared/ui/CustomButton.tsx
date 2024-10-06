@@ -1,7 +1,7 @@
 import React from "react";
 import { GestureResponderEvent, Text, TouchableOpacity } from "react-native";
 
-interface CustomButtonProps {
+interface ButtonProps {
   title: string;
   onPress?: (event: GestureResponderEvent) => void;
   containerStyles?: string;
@@ -9,13 +9,13 @@ interface CustomButtonProps {
   isLoading?: boolean;
 }
 
-const CustomButton = ({
+export const Button = ({
   title,
   onPress,
   containerStyles,
   textStyles,
   isLoading
-}: CustomButtonProps) => {
+}: ButtonProps) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -31,5 +31,3 @@ const CustomButton = ({
     </TouchableOpacity>
   );
 };
-
-export default CustomButton;

@@ -1,7 +1,7 @@
+import { icons } from "@/shared/constants";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Image, ImageProps, Text, View } from "react-native";
-import { icons } from "../../constants";
 interface TabIconProps {
   icon: ImageProps;
   color: string;
