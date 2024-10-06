@@ -2,11 +2,13 @@ import { useSignUp } from "@/api/user.query";
 import { signUpSchema, SignUpSchemaFormData } from "@/app/model";
 import { Button, FormField } from "@/shared";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "expo-router";
 import React, { useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Text, TextInput } from "react-native";
 
 export const SignUpForm = () => {
+  const router = useRouter();
   const [isSubmitting, setSubmitting] = useState(false);
 
   const {
@@ -21,11 +23,12 @@ export const SignUpForm = () => {
 
   const onSubmit = async (data: SignUpSchemaFormData) => {
     const formData = data;
+
     setSubmitting(true);
     signUpMutate(formData, {
       onSuccess: (data) => {
-        console.log(data);
         setSubmitting(false);
+        router.push("/");
       },
       onError: (error) => {
         console.log(error);
@@ -35,6 +38,27 @@ export const SignUpForm = () => {
   };
   return (
     <>
+      <Controller
+        control={control}
+        name="username"
+        render={({ field: { onChange, onBlur, value } }) => (
+          <FormField
+            title="Username"
+            value={value}
+            otherStyles="mt-7"
+            onChangeText={onChange}
+            onBlur={onBlur}
+            returnKeyType="next"
+            onSubmitEditing={() => textInputsRef.current[0]?.focus()}
+            blurOnSubmit={false}
+            textContentType="oneTimeCode"
+            autoComplete="off"
+          />
+        )}
+      />
+      {errors.username ? (
+        <Text className="text-red-400">{errors.username.message}</Text>
+      ) : null}
       <Controller
         control={control}
         name="email"
